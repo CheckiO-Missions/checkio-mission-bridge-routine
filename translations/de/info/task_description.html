@@ -1,0 +1,57 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Die Stichkraft einer Bridge-Hand wird mit <a target="_blank" href="https://en.wikipedia.org/wiki/Hand_evaluation">Milton Work point count</a> geschätzt. Wir werden eine Version implementieren, die einfach genug für Anfänger ist, entweder <b>Python</b> oder das Spiel <b>bridge</b>!  
+</p>
+<p style="text-align: justify;">
+    Betrachten wir eine Bridge-Hand, die aus dreizehn Karten als Tupel besteht <span><code>{% if is_js %}[rank, suit]{% else %}(rank, suit){% endif %}</code></span>:
+</p>
+<ul>
+    <li style="text-align: justify;">sie erhalten 4 Punkte für jede <span>ace</span>, 3 Punkte für jede <span>king</span>, 2 Punkte für jede <span>queen</span> und 1 Punkt für jede <span>jack</span>. Diese <strong>rohe Punktzahl</strong> wird dann nach den folgenden Regeln angepasst.</li>
+    <li style="text-align: justify;">wenn das Blatt eine 4-Karten-Farbe und drei 3-Karten-Farben enthält, ziehen Sie einen Punkt für <b>flat</b> ab.<i>(Flache Blätter spielen selten so gut wie nicht-flache Blätter mit gleicher Punktzahl.</i>)</li>
+    <li style="text-align: justify;">addieren Sie 1 Punkt für jede Farbe mit 5 Karten, 2 Punkte für jede Farbe mit 6 Karten und 3 Punkte für jede Farbe mit 7 Karten oder mehr.<i>(Shape ist Macht für den Erklärer.</i>)</li>
+    <li style="text-align: justify;">wenn <code>trump</code> eine andere Farbe als <code>"notrump"</code> ist, addieren Sie 5 Punkte für jede <b>void</b> (d.h. eine Farbe ohne Karten) und 3 Punkte für jede <b>singleton</b> (d.h. eine Farbe mit genau einer Karte), beides für jede andere Farbe als die <code>trump</code> Farbe.<i>(Leere Karten und Singletons sind großartig, wenn Sie einen Farbkontrakt spielen, aber sehr schlecht in einem Notrump-Kontrakt.</i> Eine Leere<i>oder ein Singleton in der Trumpffarbe zu haben, ist natürlich extrem schlecht</i>)</li>
+</ul>
+<p style="text-align: justify;">
+    Die Hände werden oft in abgekürzter Form angegeben, damit die relevanten Aspekte auf einen Blick erkennbar sind. In dieser abgekürzten Form werden die Farben immer in der exakten Reihenfolge von <b>spades, hearts, diamonds, clubs</b> aufgeführt, so dass keine besonderen Symbole erforderlich sind, um zu zeigen, welche Farbe welche ist. Die Ränge in jeder Farbe werden als Buchstaben von <code>"AKQJ"</code> für <b>aces, faces</b> aufgelistet und alle <b>spot</b> Karten, die niedriger als <span>jack</span> sind, werden als derselbe Buchstabe <code>"x"</code> ausgeschrieben, um anzuzeigen, dass ihr genauer Punktwert für die Spielmechanik dieser Hand irrelevant ist. Diese Buchstaben müssen in absteigender Reihenfolge der Ränge AKQJx aufgeführt werden. Wenn eine Farbe <b>void</b> ist, d.h. die Hand keine Karten dieser Farbe enthält, wird diese Farbe mit einem Minuszeichen "-" abgekürzt. Die Kurzformen für die einzelnen Farben werden durch einzelne Leerzeichen getrennt, ohne nachgestellte Leerzeichen. 
+</p>
+<p>
+    Ihre Funktion muss eine Anzahl von Punkten und eine Kurzform für ein gegebenes Blatt zurückgeben.  
+</p>
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> Zwei Argumente. {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> von Tupeln aus zwei Zeichenketten <span>(str{% if is_js %}ing{% endif %})</span>. Zeichenkette <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> {% if is_js %}Tupel{% else %}Tupel oder Liste{% endif %} von integer <span>({% if is_js %}number{% else %}int{% endif %})</span> und Zeichenkette <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>Die Aufgabe wurde von <span>Python CCPS 109</span> übernommen. Sie wird für <span>Ryerson Chang School of Continuing Education</span> von <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
