@@ -1,0 +1,57 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    桥牌的取巧能力是通过<a target="_blank" href="https://en.wikipedia.org/wiki/Hand_evaluation">Milton Work point count</a> 估算的，我们将使用一个简单的版本，适合<b>Python</b> 或<b>bridge</b> 游戏的初学者！  
+</p>
+<p style="text-align: justify;">
+    桥牌由十三张牌组成，如图所示 <span><code>{% if is_js %}[rank, suit]{% else %}(rank, suit){% endif %}</code></span>:
+</p>
+<ul>
+    <li style="text-align: justify;">每张<span>ace</span> 得 4 分，每张<span>king</span> 得 3 分，每张<span>queen</span> 得 2 分，每张<span>jack</span> 得 1 分。然后按以下规则调整<strong>原始点数</strong>。</li>
+    <li style="text-align: justify;">如果牌局中包含一种 4 张牌和三种 3 张牌的花色，则减去 1 分，因为它是<b>flat</b> 。<i>（平手牌很少能与非平手牌的点数相同的牌局打得一样好</i>）。</li>
+    <li style="text-align: justify;">每种花色有 5 张牌加 1 分，每种花色有 6 张牌加 2 分，每种花色有 7 张牌或以上加 3 分。<i>(形状是宣牌者的力量）。</i></li>
+    <li style="text-align: justify;">如果<code>trump</code> 不是<code>"notrump"</code> ，则每套<b>void</b> （即没有任何牌的花色）加 5 点，每套<b>singleton</b> （即正好有一张牌的花色）加 3 点，这两点都适用于<code>trump</code> 以外的任何其他花色。<i>(空张和单张在你打花色契约时非常好，但在非双陆契约中却非常不好。当然，王牌花色中的空张或单张是非常糟糕的！</i>）。</li>
+</ul>
+<p style="text-align: justify;">
+    手牌通常以缩略形式给出，使其相关方面更容易一目了然。在这种缩写速记形式中，花色总是按照<b>spades, hearts, diamonds, clubs</b> 的顺序排列，因此不需要特殊符号来表示哪一种花色是哪一种。每种花色的等级都以字母形式列出，从<code>"AKQJ"</code> 到<b>aces, faces</b> ，所有低于<span>jack</span> 的<b>spot</b> 牌都写成相同的字母<code>"x"</code> ，以表示其确切的点值与该手牌的打法无关。这些字母必须按等级从低到高的顺序排列 AKQJx。如果某花色是<b>void</b> ，即牌局中没有该花色的牌，则该花色用减号"-"缩写。各花色的缩写形式之间用单倍空格分隔，不留空白。 
+</p>
+<p>
+    您的函数必须返回给定牌局的点数和速记形式。  
+</p>
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入</strong>两个参数。{% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span>两个字符串的元组 <span>(str{% if is_js %}ing{% endif %})</span>.字符串 <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+   <strong>输出：</strong> {% if is_js %}元组{% else %}整数和字符串的元组或列表{% endif %} <span>({% if is_js %}number{% else %}int{% endif %})</span>和字符串 <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+
+<p>
+    <strong>示例</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>任务取自<span>Python CCPS 109</span> 。它通过以下方式传授<span>Ryerson Chang School of Continuing Education</span> <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
