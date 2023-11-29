@@ -1,0 +1,57 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Сила взяття трюку бридж-рукою оцінюється за допомогою <a target="_blank" href="https://en.wikipedia.org/wiki/Hand_evaluation">Milton Work point count</a>, з якої ми реалізуємо досить просту для початківців версію або <b>Python</b>, або гри в <b>bridge</b>!  
+</p>
+<p style="text-align: justify;">
+    Розглянемо бридж-руку, яка складається з тринадцяти карт у вигляді кортежу <span><code>{% if is_js %}[rank, suit]{% else %}(rank, suit){% endif %}</code></span>:
+</p>
+<ul>
+    <li style="text-align: justify;">дайте їй 4 очки за кожну <span>ace</span>, 3 очки за кожну <span>king</span>, 2 очки за кожну <span>queen</span> і 1 очко за кожну <span>jack</span>. Ця початкова кількість <strong>очок</strong> потім коригується за наступними правилами.</li>
+    <li style="text-align: justify;">якщо рука містить одну 4-карткову масть і три 3-карткові масті, відніміть одне очко за те, що вона <b>flat</b>.<i>(Рівні руки рідко грають так само, як і нерівні руки з однаковою</i> кількістю очок)</li>
+    <li style="text-align: justify;">додайте 1 очко за кожну масть з 5 картами, 2 очки за кожну масть з 6 картами і 3 очки за кожну масть з 7 картами або більше.<i>(Форма - це сила для декларанта</i>)</li>
+    <li style="text-align: justify;">якщо <code>trump</code> є чимось іншим, ніж <code>"notrump"</code>, додайте 5 очок за кожну <b>void</b> (тобто масть без жодної карти) і 3 очки за кожну <b>singleton</b> (тобто масть з однією картою), причому обидві ці суми за будь-яку іншу масть, крім масті <code>trump</code>.<i>(Пустоти та сингли дуже корисні, коли ви граєте мастьовий контракт, але дуже погані в безкозирному контракті. Бути пустим або одномастним у козирній масті - це, звісно, дуже погано!</i>)</li>
+</ul>
+<p style="text-align: justify;">
+    Руки часто подаються в скороченому вигляді, що полегшує візуалізацію їхніх важливих аспектів з першого погляду. У цій скороченій стенографічній формі масті завжди перераховані в точному порядку <b>spades, hearts, diamonds, clubs</b>, тому не потрібно ніяких спеціальних символів, щоб показати, яка масть яка. Ранги в кожній масті перераховані як літери від <code>"AKQJ"</code> до <b>aces, faces</b>, а всі карти <b>spot</b> нижче <span>jack</span> записуються однією літерою <code>"x"</code>, щоб показати, що їх точна спотова вартість не має значення для механіки гри в цій руці. Ці літери повинні бути перераховані в порядку убування рангів AKQJx. Якщо якась масть є <b>void</b>, тобто в руці немає карт цієї масті, то ця масть скорочується зі знаком мінус "-". Форми скорочення для окремих мастей відокремлюються одинарними пробілами, без пропусків. 
+</p>
+<p>
+    Ваша функція повинна повертати кількість балів та скорочену форму заданої руки.  
+</p>
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Вхідні дані:</strong> Два аргументи. {% if is_js %}Масив{% else %}Список{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> кортежів з двох рядків <span>(str{% if is_js %}ing{% endif %})</span>. Рядок <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+   <strong>Вихідні дані:</strong> {% if is_js %}Кортеж{% else %}Кортеж або список{% endif %} з цілого числа <span>({% if is_js %}number{% else %}int{% endif %})</span> та рядка <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+
+<p>
+    <strong>Приклади:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>Завдання взято з сайту <span>Python CCPS 109</span>. Викладається для <span>Ryerson Chang School of Continuing Education</span> за допомогою <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
