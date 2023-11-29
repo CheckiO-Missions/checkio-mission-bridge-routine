@@ -1,0 +1,57 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Le pouvoir d'exécution d'une main de bridge est estimé à l'aide de <a target="_blank" href="https://en.wikipedia.org/wiki/Hand_evaluation">Milton Work point count</a>, dont nous allons mettre en œuvre une version suffisamment simple pour les débutants, que ce soit pour <b>Python</b> ou pour le jeu de <b>bridge</b>!  
+</p>
+<p style="text-align: justify;">
+    Si l'on considère une main de bridge composée de treize cartes sous forme de tuples <span><code>{% if is_js %}[rank, suit]{% else %}(rank, suit){% endif %}</code></span>:
+</p>
+<ul>
+    <li style="text-align: justify;">donnez-lui 4 points pour chaque <span>ace</span>, 3 points pour chaque <span>king</span>, 2 points pour chaque <span>queen</span>, et 1 point pour chaque <span>jack</span>. Ce <strong>nombre de points bruts</strong> est ensuite ajusté selon les règles suivantes.</li>
+    <li style="text-align: justify;">si la main contient une couleur à 4 cartes et trois couleurs à 3 cartes, soustrayez un point pour être <b>flat</b><i>(les mains plates jouent rarement aussi bien que les mains non plates à nombre de points égal</i>)</li>
+    <li style="text-align: justify;">ajoutez 1 point pour chaque couleur ayant 5 cartes, 2 points pour chaque couleur ayant 6 cartes et 3 points pour chaque couleur ayant 7 cartes ou plus.<i>(La forme est un pouvoir pour le déclarant.</i>)</li>
+    <li style="text-align: justify;">si le <code>trump</code> est autre chose que le <code>"notrump"</code>, ajoutez 5 points pour chaque <b>void</b> (c'est-à-dire une couleur sans aucune carte) et 3 points pour chaque <b>singleton</b> (c'est-à-dire une couleur avec exactement une carte), les deux pour toute autre couleur que la couleur <code>trump</code>.<i>(Les vides et les singletons sont excellents lorsque vous jouez un contrat de couleur, mais très mauvais dans un contrat sans atout. Être nul ou singleton dans la couleur d'atout est, bien sûr, extrêmement mauvais</i>)</li>
+</ul>
+<p style="text-align: justify;">
+    Les mains sont souvent présentées sous une forme abrégée qui facilite la visualisation de leurs aspects pertinents en un coup d'œil. Dans cette forme abrégée, les couleurs sont toujours énumérées dans l'ordre exact de <b>spades, hearts, diamonds, clubs</b>, de sorte qu'aucun symbole spécial n'est nécessaire pour indiquer de quelle couleur il s'agit. Les rangs de chaque couleur sont indiqués sous forme de lettres, de <code>"AKQJ"</code> à <b>aces, faces</b>, et toutes les cartes <b>spot</b> inférieures à <span>jack</span> sont écrites sous la forme de la même lettre <code>"x"</code> pour indiquer que leur valeur exacte n'a pas d'importance pour les mécanismes de jeu de cette main. Ces lettres doivent être énumérées dans l'ordre décroissant des rangs AKQJx. Si une couleur est <b>void</b>, c'est-à-dire que la main ne contient aucune carte de cette couleur, cette couleur est abrégée par le signe "-". Les formes abrégées des différentes couleurs sont séparées par des espaces simples, sans espace blanc à la fin. 
+</p>
+<p>
+    Votre fonction doit renvoyer un nombre de points et une forme abrégée d'une main donnée.  
+</p>
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> Deux arguments. {% if is_js %}Tableau{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> de tuples de deux chaînes de caractères <span>(str{% if is_js %}ing{% endif %})</span>. Chaîne <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+   <strong>Sortie:</strong> {% if is_js %}Tuple{% else %}Tuple ou liste{% endif %} d'entiers et de chaînes <span>({% if is_js %}number{% else %}int{% endif %})</span> et de chaînes de caractères <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+
+<p>
+    <strong>Exemples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
+<p><i>La mission est extraite de <span>Python CCPS 109</span>. Elle est enseignée à <span>Ryerson Chang School of Continuing Education</span> par <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
